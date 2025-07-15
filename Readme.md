@@ -40,7 +40,7 @@ The dataset used is `spam.csv`, which contains:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/spam-classifier.git
+    git clone  https://github.com/DennisMwauraKA/spam_classifier.git
     cd spam_classifier
     ```
 
