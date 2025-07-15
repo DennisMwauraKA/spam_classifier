@@ -5,7 +5,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import precision_score, recall_score, f1_score,accuracy_score
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import joblib
 df = pd.read_csv("spam.csv", encoding='latin-1')[['v1', 'v2']]
 df.columns = ['label', 'text']
 df['label'] = df['label'].map({'ham': 0, 'spam': 1})
@@ -20,6 +20,10 @@ X_test_vec = vectorizer.transform(X_test)
 model = MultinomialNB()
 model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
+
+joblib.dump(model, 'spam_classifier.joblib')
+joblib.dump(vectorizer, 'spam_vectorizer.joblib')
+
 
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("Precision:", precision_score(y_test, y_pred))
